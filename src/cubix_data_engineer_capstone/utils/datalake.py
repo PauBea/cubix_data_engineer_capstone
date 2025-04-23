@@ -1,7 +1,7 @@
 from pyspark.sql import DataFrame, SparkSession
 
 
-from src.utils.config import STORAGE_ACCOUNT_NAME
+from cubix_data_engineer_capstone.utils.config import STORAGE_ACCOUNT_NAME
 
 
 def read_file_from_datalake(container_name: str, file_path: str, format: str) -> DataFrame:
