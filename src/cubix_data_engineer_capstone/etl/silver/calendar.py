@@ -2,7 +2,6 @@ import pyspark.sql.functions as sf
 from pyspark.sql import DataFrame
 
 
-
 def get_calendar(calendar_raw: DataFrame) -> DataFrame:
 
     """Clean and transform data type for Calendar data.
