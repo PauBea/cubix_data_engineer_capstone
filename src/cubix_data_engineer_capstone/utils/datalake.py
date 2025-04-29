@@ -5,20 +5,20 @@ from cubix_data_engineer_capstone.utils.config import STORAGE_ACCOUNT_NAME
 
 
 def read_file_from_datalake(
-        container_name: str, 
-        file_path: str, 
+        container_name: str,
+        file_path: str,
         format: str) -> DataFrame:
-    
+
     """Reads a file from Azure DataLake and returns it as a Spark Dataframe
 
     Args:
-        container_name (str):   
+        container_name (str):
             The name of the file system (container) in Azure.
-        file_path (str):        
+        file_path (str):
             The path to the file in the data lake.
-        format (str):           
+        format (str):
             The format if the file("csv", "json", "delta","parquet").
-        return:                 
+        return:
             DataFrame with a loaded data.
     """
     if format not in ["csv", "parquet", "delta", "json"]:
@@ -53,29 +53,29 @@ def read_file_from_datalake(
 
 
 def write_file_to_datalake(
-        df: DataFrame, 
-        container_name: str, 
-        file_path: str, 
-        format: str, 
-        mode: str = "overwrite", 
+        df: DataFrame,
+        container_name: str,
+        file_path: str,
+        format: str,
+        mode: str = "overwrite",
         partition_by: list[str] = None
 ):
 
     """Writes a DataFrame to Azure Data Lake as a parquet / csv/ delta format.
 
     Args:
-        df (DataFrame): 
+        df (DataFrame):
             DataFrame to be written.
-        container_name (str): 
+        container_name (str):
             The name of the file system (container) in Azure Data Lake.
-        file_path (str): 
+        file_path (str):
             The path to the file in the data lake.
-        format (str): 
+        format (str):
             The format of the file ("csv", "json", "delta", "parquet").
-        mode (str, optional): 
-            Default "overwrite", write mode. 
-        partition_by (list[str], optional): 
-            list of column to partition by, default in None. 
+        mode (str, optional):
+            Default "overwrite", write mode.
+        partition_by (list[str], optional):
+            list of column to partition by, default in None.
 
     """
 
@@ -89,8 +89,8 @@ def write_file_to_datalake(
         f"abfss://{container_name}@"
         f"{STORAGE_ACCOUNT_NAME}.dfs.core.windows.net/"
         f"{file_path}"
-    ) 
-    
+    )
+
     writer = df.write.mode(mode).format(format)
     if format == "csv":
         writer = writer.option("header", True)
