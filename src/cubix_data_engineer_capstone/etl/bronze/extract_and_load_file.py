@@ -1,4 +1,4 @@
-from cubix_data_engineer_capstone.utils.datalake import read_file_from_datalake, write_file_to_datalake
+from cubix_data_engineer_capstone.utils.datalake import read_file_from_datalake, write_file_to_datalake   # noqa: E501
 
 
 def bronze_ingest(
@@ -21,7 +21,11 @@ def bronze_ingest(
     :param partition_by: Column(s) to partition on. "None" by default.
     """
 
-    df = read_file_from_datalake(container_name, f"{source_path}/{file_name}", format)
+    df = read_file_from_datalake(
+        container_name,
+        f"{source_path}/{file_name}",
+        format
+    )
 
     return write_file_to_datalake(
         df=df,
