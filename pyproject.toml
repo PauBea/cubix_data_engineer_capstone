@@ -20,7 +20,13 @@ packages = [{include = "cubix_data_engineer_capstone", from = "src"}]
 pytest = "^8.3.5 "
 pyarrow= "^19.0.1 "
 pre-commit = "^4.2.0"
+pandas = "^2.2.3"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+textpaths = ["./tests"]
+filterwarnings = ["ignore:DeprecationWarning"]
+addopts = " --disable-warnings -p no:warnings"

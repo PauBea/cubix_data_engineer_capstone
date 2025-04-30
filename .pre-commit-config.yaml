@@ -1,0 +1,27 @@
+#files: ^cubix_data_engineer_capstone/ - ez nem kell,
+# vagy helyette: files: ^src/cubix_data_engineer_capstone/
+
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+      - id: debug-statements
+      - id: mixed-line-ending
+        args: ['--fix=auto']
+
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.11.7  # Or the latest version
+    hooks:
+    - id: ruff
+      types: [python]
+      args: [ --fix]
