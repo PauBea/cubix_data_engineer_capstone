@@ -14,9 +14,9 @@ def test_get_sales(spark):
     test_data = spark.createDataFrame(
         [
             # include - sample to keep
-            ("son_1", "2017-01-03", "1", "2", "2017-02-03", "3", "extra_value"),
+            ("son_1", "2017-01-03", "1", "2", "2017-02-03", "3", "extra_value"),  # noqa E501
             # exclude - duplicate
-            ("son_1", "2017-01-03", "1", "2", "2017-02-03", "3", "extra_value"),
+            ("son_1", "2017-01-03", "1", "2", "2017-02-03", "3", "extra_value"),  # noqa E501
         ],
         schema=[
             "son",
@@ -47,7 +47,6 @@ def test_get_sales(spark):
     )
 
     expected = spark.createDataFrame(
-
         [
             (
                 "son_1",
