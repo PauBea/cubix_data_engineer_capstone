@@ -53,7 +53,6 @@ def get_customers(customers_raw: DataFrame) -> DataFrame:
             sf.col("phone")
         )
         .withColumnsRenamed(CUSTOMERS_MAPPING)
-        .dropDuplicates()
         .withColumn(
             "MaritalStatus",
             sf.when(sf.col("MaritalStatus") == "M", 1)
@@ -77,7 +76,6 @@ def get_customers(customers_raw: DataFrame) -> DataFrame:
             sf.when(sf.col("YearlyIncome") <= 50000, "Low")
             .when(sf.col("YearlyIncome") <= 100000, "Medium")
             .otherwise("High")
-            .cast("int")
         )
         .withColumn(
             "BirthYear",
