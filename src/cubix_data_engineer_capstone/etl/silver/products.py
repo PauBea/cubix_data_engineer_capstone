@@ -29,8 +29,6 @@ def get_products(products_raw: DataFrame) -> DataFrame:
     4. Replace "NA" values with None.
     5. Drop duplicates.
 
-    :param products_raw: _description_
-    :return: _description_
     """
 
     return (
