@@ -1,24 +1,26 @@
-[project]
+[tool.poetry]
 name = "cubix-data-engineer-capstone"
 version = "0.2.2"
 description = ""
-authors = [
-    {name = "Beata Paulanyi",email = "paulanyi@aol.com"}
-]
+authors = ["Beata Paulanyi <paulanyi@aol.com>"]
 readme = "README.md"
-requires-python = ">=3.11"
+packages = [{include = "cubix_data_engineer_capstone", from = "src"}]
+license = "MIT"
+keywords = ["data-engineering", "spark", "databricks", "capstone"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 pyspark = "^3.5.4"
-numpy= "^1"
-
-[tool.poetry]
-packages = [{include = "cubix_data_engineer_capstone", from = "src"}]
+numpy = "^1"
+delta-spark = "^3.3.1"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.5 "
-pyarrow= "^19.0.1 "
+pytest = "^8.3.5"
+pyarrow = "^19.0.1"
 pre-commit = "^4.2.0"
 pandas = "^2.2.3"
 
@@ -27,6 +29,6 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-textpaths = ["./tests"]
+testpaths = ["./tests"]
 filterwarnings = ["ignore:DeprecationWarning"]
-addopts = " --disable-warnings -p no:warnings"
+addopts = "--disable-warnings -p no:warnings"
