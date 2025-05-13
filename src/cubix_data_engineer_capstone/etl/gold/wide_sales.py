@@ -7,8 +7,8 @@ def _join_master_tables(
         calendar_master: DataFrame,
         customers_master: DataFrame,
         products_master: DataFrame,
-        product_category_master: DataFrame,
-        product_subcategory_master: DataFrame
+        product_subcategory_master: DataFrame,
+        product_category_master: DataFrame
 ) -> DataFrame:
     """Join the master DataFrames to te Sales Master.
     Drop Date, ProductSubCategoryKey and
@@ -37,7 +37,7 @@ def _join_master_tables(
             products_master["ProductSubCategoryKey"] == product_subcategory_master["ProductSubCategoryKey"],  # noqa: E501
             how="left"
         )
-        .drop (product_subcategory_master["ProductSubCategoryKey"])
+        .drop(product_subcategory_master["ProductSubCategoryKey"])
         .join(
             product_category_master,
             product_category_master["ProductCategoryKey"] == product_subcategory_master["ProductCategoryKey"],  # noqa: E501
@@ -52,8 +52,8 @@ def get_wide_sales(
     calendar_master: DataFrame,
     customers_master: DataFrame,
     products_master: DataFrame,
-    product_category_master: DataFrame,
-    product_subcategory_master: DataFrame
+    product_subcategory_master: DataFrame,
+    product_category_master: DataFrame
 
 ) -> DataFrame:
     """
@@ -79,8 +79,8 @@ def get_wide_sales(
         calendar_master,
         customers_master,
         products_master,
-        product_category_master,
-        product_subcategory_master
+        product_subcategory_master,
+        product_category_master
     )
 
     calculate_sales_amount = sf.col("OrderQuantity") * sf.col("ListPrice")
