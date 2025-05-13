@@ -4,12 +4,13 @@ from unittest.mock import patch
 
 import pyspark.sql.types as st
 import pyspark.testing as spark_testing
-from cubix_data_engineer_capstone.etl.gold.wide_sales import _join_master_tables, get_wide_sales
+from cubix_data_engineer_capstone.etl.gold.wide_sales import _join_master_tables, get_wide_sales  # noqa: E501
 
 
 def test_join_master_tables(spark):
     """
-    Positive tst that the function _join_master_tables returns the expected DataFrame.
+    Positive tst that the function _join_master_tables
+        returns the expected DataFrame.
     Fontos: a key-k legyenek átfedésben, hogy legyen min join-olni!
 
     """
@@ -22,7 +23,7 @@ def test_join_master_tables(spark):
         st.StructField("CustomerKey", st.IntegerType(), True),
         st.StructField("ProductKey", st.IntegerType(), True)
     ])
-    sales_master_test = spark.createDataFrame(sales_master_test_data, schema=sales_schema)
+    sales_master_test = spark.createDataFrame(sales_master_test_data, schema=sales_schema)  # noqa: E501
 
     calendar_master_test_data = [
         (datetime(2017, 1, 1), "Monday")
@@ -31,7 +32,7 @@ def test_join_master_tables(spark):
         st.StructField("Date", st.DateType(), True),
         st.StructField("DayName", st.StringType(), True)
     ])
-    calendar_master_test = spark.createDataFrame(calendar_master_test_data, schema=calendar_schema)
+    calendar_master_test = spark.createDataFrame(calendar_master_test_data, schema=calendar_schema)  # noqa: E501
 
     customer_master_test_data = [
         (2, "John Doe")
@@ -40,7 +41,7 @@ def test_join_master_tables(spark):
         st.StructField("CustomerKey", st.IntegerType(), True),
         st.StructField("Name", st.StringType(), True)
     ])
-    customer_master_test = spark.createDataFrame(customer_master_test_data, schema=customer_schema)
+    customer_master_test = spark.createDataFrame(customer_master_test_data, schema=customer_schema)  # noqa: E501
 
     product_master_test_data = [
         (3, 4, "Test Product")
@@ -50,7 +51,7 @@ def test_join_master_tables(spark):
         st.StructField("ProductSubCategoryKey", st.IntegerType(), True),
         st.StructField("ProductName", st.StringType(), True)
     ])
-    product_master_test = spark.createDataFrame(product_master_test_data, schema=product_schema)
+    product_master_test = spark.createDataFrame(product_master_test_data, schema=product_schema)  # noqa: E501
 
     product_subcategory_test_data = [
         (4, 5, "Test Product Subcategory")
@@ -60,7 +61,7 @@ def test_join_master_tables(spark):
         st.StructField("ProductCategoryKey", st.IntegerType(), True),
         st.StructField("EnglishProductSubcategoryName", st.StringType(), True)
     ])
-    product_subcategory_master_test = spark.createDataFrame(product_subcategory_test_data, schema=product_subcategory_schema)
+    product_subcategory_master_test = spark.createDataFrame(product_subcategory_test_data, schema=product_subcategory_schema)  # noqa: E501
 
     product_category_master_test_data = [
         (5, "Test Product Category")
@@ -69,7 +70,7 @@ def test_join_master_tables(spark):
         st.StructField("ProductCategoryKey", st.IntegerType(), True),
         st.StructField("EnglishProductCategoryName", st.StringType(), True)
     ])
-    product_category_master_test = spark.createDataFrame(product_category_master_test_data, schema=product_category_schema)
+    product_category_master_test = spark.createDataFrame(product_category_master_test_data, schema=product_category_schema)  # noqa: E501
 
     result = _join_master_tables(
         sales_master_test,
@@ -112,6 +113,7 @@ def test_join_master_tables(spark):
 
     spark_testing.assertDataFrameEqual(result, expected)
 
+
 @patch("cubix_data_engineer_capstone.etl.gold.wide_sales._join_master_tables")
 def test_get_wide_sales(mock_join_master_tables, spark, some_df):
     """
@@ -148,7 +150,7 @@ def test_get_wide_sales(mock_join_master_tables, spark, some_df):
 
     )
 
-    expected_schema =  st.StructType([
+    expected_schema = st.StructType([
         st.StructField("SalesOrderNumber", st.StringType(), True),
         st.StructField("OrderQuantity", st.IntegerType(), True),
         st.StructField("StandardCost", st.DecimalType(10, 2), True),
