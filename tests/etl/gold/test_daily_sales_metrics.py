@@ -23,6 +23,7 @@ def test_get_daily_sales_metrics(spark):
         st.StructField("Profit", st.DecimalType(10, 2), True)
     ])
 
+
     wide_sales_test = spark.createDataFrame(wide_sales_test_data, schema=wide_sales_test_schema)
 
     result = get_daily_sales_metrics(wide_sales_test)
