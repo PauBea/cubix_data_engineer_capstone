@@ -10,10 +10,9 @@ def get_daily_product_category_metrics(wide_sales: DataFrame) -> DataFrame:
     :return:            DataFrame with daily metrics including:
                         "SalesAmountSum", "SalesAmountAvg",
                         ProfitSum", "ProfitAvg"
-                        grouped by "OrderDate".
+                        grouped by "EnglishProductCategoryName", "OrderDate".
 
-    :param wide_sales: _description_
-    :return: _description_
+
     """
     return (
         wide_sales

@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pyspark.sql.types as st
 import pyspark.testing as spark_testing
-from cubix_data_engineer_capstone.etl.gold.daily_product_category_metrics import get_daily_product_category_metrics
+from cubix_data_engineer_capstone.etl.gold.daily_product_category_metrics import get_daily_product_category_metrics  # noqa: E501
 
 
 def test_get_daily_product_category_metrics(spark):
@@ -28,7 +28,7 @@ def test_get_daily_product_category_metrics(spark):
         st.StructField("Profit", st.DecimalType(10, 2), True)
     ])
 
-    wide_product_cat_test = spark.createDataFrame(wide_product_cat_test_data, schema=wide_product_cat_test_schema)
+    wide_product_cat_test = spark.createDataFrame(wide_product_cat_test_data, schema=wide_product_cat_test_schema)  # noqa: E501
 
     result = get_daily_product_category_metrics(wide_product_cat_test)
 
