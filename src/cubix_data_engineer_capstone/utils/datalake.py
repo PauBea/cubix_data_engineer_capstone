@@ -1,6 +1,5 @@
 from pyspark.sql import DataFrame, SparkSession
 
-
 from cubix_data_engineer_capstone.utils.config import STORAGE_ACCOUNT_NAME
 
 
