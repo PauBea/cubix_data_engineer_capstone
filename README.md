@@ -100,19 +100,22 @@ src/
     config.py
     datalake.py
 tests/
+pyproject.toml
 ```
 ---
 
-## ▶️ How to Run the Pipeline
+## ▶️ Running the Pipeline
 The pipeline was originally executed within a Databricks notebook.
 
 ## 📦 Installing Dependencies
-Dependencies are managed using Poetry. Dependencies can be installed with:
+Dependencies are managed using **Poetry** and are defined in the pyproject.toml file.
+Install them with:
 
 pip install poetry
+
 poetry install
 
 ## ✅ Running Tests
 Tests can be executed with:
 
-pytest
+pytest tests/
